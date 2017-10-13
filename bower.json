@@ -1,0 +1,7 @@
+{
+  "name": "vendorfin",
+  "dependencies": {
+    "dinosheets": "0.1.1",
+    "pickadate": "^3.5.6"
+  }
+}

@@ -1,0 +1,30 @@
+<div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar"
+  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{percentageComplete}}%">
+    {{percentageComplete}}%
+  </div>
+</div>
+
+
+{{#if showsteplist}}
+{{partial 'step6'}}
+
+{{else}}
+{{partial 'anchorsteplist'}}
+{{/if}}
+
+{{#if approveProperty}}
+  {{#modal-dialog close="toggleModal"
+                  targetAttachment="center"
+                  translucentOverlay=true}}
+   <div class="loginmodal-container">
+ <p>
+
+   {{modalmessage}}
+      
+ </p>
+ <input type="button" class="btn btn-primary pull-right" value="OK" {{action 'gotohome'}}>
+   </div>
+
+  {{/modal-dialog}}
+{{/if}}

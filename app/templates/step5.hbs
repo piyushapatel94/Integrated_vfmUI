@@ -1,0 +1,32 @@
+   {{!--{{partial 'step1'}}--}}
+     
+
+<div class="box">
+   <div class="list-group">
+      <p class="list-group-item">
+        Manufacuturer Name : {{anchorName}}
+      </p>
+      <br>
+      <p class="list-group-item">
+         Invoice Date : {{pick-a-date  date=(readonly formdate) on-selected=(action (mut formdate)) placeholder="Pick a date" options=(readonly extraPickadateOptions)}}
+      </p>
+      <br>
+      <p class="list-group-item">
+        Total Amount :{{validated-input type="text" model=this  valuePath='totalamount' placeholder="Product Quantity"}}
+      </p>
+      <br>
+      <p class="list-group-item">
+         Manufacuturer bank :{{validated-input type="text" model=this  valuePath='anchorbank' placeholder="Anchor Bank"}}
+      </p>
+      <br>
+       <p class="list-group-item">
+         Product Quantity :{{validated-input type="text" model=this  valuePath='productquantity' placeholder="Product Quantity"}}{{!--{{vendorbank}}--}} 
+      </p>
+      <span class="file">
+         <p class="ist-group-item">  Upload Invoice :  {{#pl-uploader  for="upload_file" runtimes="html5 flash silverlight" onfileadd="uploadDoc" as |queue|}}
+          <a id="upload_file" style="font-size:18px"><img src="assets/images/up1.png" alt="Smiley face" width="42" height="42">Click Here To Upload Document</a>
+          {{/pl-uploader}}
+         </p>
+      </span>
+   </div>
+</div>

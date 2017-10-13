@@ -1,0 +1,71 @@
+
+
+
+{{#if programInitiate}}
+    {{#modal-dialog close="toggleModal"
+                  targetAttachment="center"
+                  translucentOverlay=true}}
+      <div class="loginmodal-container">
+        <p>
+          After Approving Invoice from Anchor ,You should Initiate the payment !!
+          {{modalmessage}}
+        </p>
+ <input type="button" class="btn btn-primary pull-right" value="OK" {{action 'okgotohome'}}>
+   </div>
+
+    {{/modal-dialog}}
+
+{{else if PORaised}}
+    {{partial 'step8'}}
+{{else if paymentapproved}}
+    {{partial 'step9' }}
+{{else if  Invoiceapprove}}
+    {{partial 'invoiceapprv'}}
+{{else}}
+    <div class="row padding-10">
+      <input type="button" class="btn btn-primary pull-right" value="Create New Program" {{action 'createprogram'}}>
+    </div>
+   {{!--
+{{models-table data=model columns=columns close='closure' test='detailprogram'}}--}}
+
+<table >
+    <thead>
+      <tr>
+        <th>Program</th>
+        <th>Date</th>
+        <th>Status</th>
+        
+    <th>close</th>
+      </tr>
+    </thead>
+    
+      <ul style="list-style-type:none">
+     {{#each message as |item|}}
+      <tr>
+      <td style="padding:3px">  <li> {{item.programid}} </li></td>
+      <td style="padding:3px"> <li> {{item.date}}</li></td>
+      <td> <li> <button {{action 'detailprogram' item.status item.programid}}>{{item.status}}</button></li></td>
+  
+     <td>  <li> <button {{action 'closeProgram' item}}>Close</button></li></td>
+      </tr>
+      {{/each}}
+     
+      </ul>
+    
+  </table>
+{{/if}}
+
+{{#if approveProperty}}
+  {{#modal-dialog close="toggleModal"
+                  targetAttachment="center"
+                  translucentOverlay=true}}
+   <div class="loginmodal-container">
+      <p>
+        Program Close
+      {{modalmessage}}
+      </p>
+ <input type="button" class="btn btn-primary pull-right" value="OK" {{action 'gotohome'}}>
+   </div>
+
+  {{/modal-dialog}}
+{{/if}}

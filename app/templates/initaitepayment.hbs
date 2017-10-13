@@ -1,0 +1,68 @@
+{{outlet}}
+{{!--{{"this payment page"}}--}}
+<div class="panel panel-primary">
+<div class="panel-heading">  Details page </div>
+</div>
+  <form class="form-horizontal">
+
+      <div class="form-group">
+      <label class="control-label col-sm-2" >Vendor :</label>
+      <div class="col-sm-10">
+          {{input type="text" class="form-control" id="name" placeholder="vendor" value="ABC Enterprise"}}
+       
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label class="control-label col-sm-2">Recievable Amount:</label>
+      <div class="col-sm-10">
+          {{input type="text" class="form-control" id="email" placeholder="Recievable Amount"}}
+       
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">Discounted Amount:</label>
+      <div class="col-sm-10">        
+          {{input type="text" class="form-control"  placeholder="Discount"}}  
+      </div>
+    </div>
+
+
+ <div class="form-group">
+      <label class="control-label col-sm-2"  >Payment Mode:</label>
+      <div class="col-sm-10">        
+          {{input type="text" class="form-control"  placeholder="NEFT"}}  
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label class="control-label col-sm-2"  >Bank</label>
+      <div class="col-sm-10">        
+          {{input type="text" class="form-control"  placeholder="bank"}}  
+      </div>
+    </div>
+
+   
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <input type="button" class="btn btn-primary pull-right" value="Continue" {{action 'initiate'}}>
+      </div>
+    </div>
+  </form>
+
+  {{#if approveProperty}}
+  {{#modal-dialog close="toggleModal"
+                  targetAttachment="center"
+                  translucentOverlay=true}}
+   <div class="loginmodal-container">
+ <p>
+
+   {{modalmessage}}
+      
+ </p>
+ <input type="button" class="btn btn-primary pull-right" value="OK" {{action 'gotohome'}}>
+   </div>
+
+  {{/modal-dialog}}
+{{/if}}

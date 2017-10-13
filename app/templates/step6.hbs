@@ -1,0 +1,32 @@
+{{!--approve invoice --}}
+
+
+
+ --Invoice Details--
+
+<div class="box">
+   <div class="list-group">
+    
+      <p class="list-group-item">
+        Manufacturer Name : {{validated-input type="text"  model=this  valuePath='anchorname' placeholder="Manufacturer Name" }}
+      </p>
+      <br>
+      <p class="list-group-item">
+         Invoice No :  {{validated-input type="text"  model=this  valuePath='invoiceno' placeholder="Invoice Number" }}
+      </p>
+      <br>
+      <p class="list-group-item">
+        Invoice Amnount : {{validated-input type="text"  model=this  valuePath='totalamount' placeholder="Invoice amount" }}
+      
+      </p>
+      <br>
+     
+
+   </div>
+</div>
+
+<p>
+<button type="button" class="btn btn-primary pull-right" {{action 'approve'}}>
+      Approve
+      </button>
+</p>

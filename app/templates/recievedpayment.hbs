@@ -1,0 +1,21 @@
+<div class="box">
+   <div class="list-group">
+      <p class="list-group-item">
+         Manufacturer Name : {{validated-input type="text" model=this  valuePath='anchorname' placeholder="Manufacturer bank"}}{{!--{{vendorbank}}--}} 
+      </p>
+      
+      <br>
+      <p class="list-group-item">
+         Recieved Paymnet : {{validated-input type="text" model=this  valuePath='totalamount' placeholder="Recieved Amount"}}{{!--{{vendorbank}}--}} 
+      </p>
+      <br>
+     <p class="list-group-item">
+      Recieved Paymnet  Date : {{pick-a-date  date=(readonly formdate) on-selected=(action (mut formdate)) placeholder="Pick a date" options=(readonly extraPickadateOptions)}}
+      </p>
+      <span class="file">
+      <button type="button" class="btn btn-primary pull-center" value="Confirm Program initiation" {{action 'paymentrecieved'}}>
+     Recieved payment
+      </button>
+      </span>
+   </div>
+</div>

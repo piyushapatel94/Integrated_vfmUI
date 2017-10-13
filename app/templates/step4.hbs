@@ -1,0 +1,45 @@
+
+{{!--{{#if selectedVendor}}--}}
+<div class="box">
+   <div class="list-group">
+      <p class="list-group-item">
+         Vendor Name : {{vendorname}}
+      </p>
+      <br>
+      <p class="list-group-item">
+         PO Date :{{pick-a-date  date=(readonly formdate) on-selected=(action (mut formdate)) placeholder="Pick a date" options=(readonly extraPickadateOptions)}}{{!--{{vendoremail}}--}} 
+      </p>
+      <br>
+      <p class="list-group-item">
+         Vendor Phone :{{validated-input type="number" model=this  valuePath='vendorphone' placeholder=" Vendor Phone"}}{{!--{{vendorphone}}--}} 
+      </p>
+      <br>
+      <p class="list-group-item">
+         Vendor bank :{{validated-input type="text" model=this  valuePath='vendorbank' placeholder=" Vendor bank"}}{{!--{{vendorbank}}--}} 
+      </p>
+      <br>
+      <p class="list-group-item">
+         Product Quantity :{{validated-input type="text" model=this  valuePath='productquantity' placeholder="Product Quantity"}}{{!--{{vendorbank}}--}} 
+      </p>
+      <br>
+      <p class="list-group-item">
+         Total Amount :{{validated-input type="text" model=this  valuePath='totalamount' placeholder="Total Amount"}}{{!--{{vendorbank}}--}} 
+      </p>
+      <br>
+       <!-- <div class="input-group-addon">
+            <span class="glyphicon glyphicon-picture"></span>
+        </div>
+        <input type="file" multiple="true" onchange={{action "upload"}} accept="doc/pdf" type="file"/>-->
+      <span class="file">
+         <p class="list-group-item">  Upload Purchase order : 
+            {{#pl-uploader  for="upload_file" runtimes="html5 flash silverlight" onfileadd="uploadDoc" as |queue|}}
+          <a id="upload_file" style="font-size:18px"><img src="assets/images/up1.png" alt="Smiley face" width="42" height="42">Click Here To Upload Document</a>
+          {{/pl-uploader}}
+         </p>
+      </span>
+   </div>
+</div>{{!--
+{{else}}
+{{partial 'step2'}}
+
+{{/if}}--}}

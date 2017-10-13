@@ -1,0 +1,22 @@
+<div class="box">
+   <div class="list-group">
+      <p class="list-group-item">
+        Anchor Name : AXY pvt ltd.
+      </p>
+      <br>
+      <p class="list-group-item">
+        Vendor Name :TCS
+      </p>
+      <br>
+      <p class="list-group-item">
+        Amount  :   {{validated-input type="text"  model=this  valuePath='totalamount' placeholder=" Total Amount" }}
+      </p>
+      <br>
+      <p class="list-group-item">
+        Invoice No : AT4500
+      </p>
+      <br>
+    {{!--  {{input type="button" value="approve" action=gotohome}}--}}
+      <button type="button" name="Invoice approve"{{action 'toinititaepayment'}}>OK</button>
+   </div>
+</div>

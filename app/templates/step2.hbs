@@ -1,0 +1,78 @@
+<!--
+<h1> Choose the Vendor for the anchor : <span class="btn btn-success"> {{selectedAnchor}} </span> </h1>
+<div class="list-group">
+{{#each vendorList as |item|}}
+<p {{action 'chooseVendor' item}}>
+    <a href="#" class="list-group-item">
+
+     {{item}}  
+
+    </a>
+</p>  
+{{/each}}
+</div>-->
+
+    
+{{#if vendorregulator}}
+<h1> Choose the Vendor for the anchor:  </h1>
+<div class="list-group">
+
+<p class="list-group-item">
+  
+{{multiselect-checkboxes options=vendorList  selection=selectedvendor }}
+
+</p> 
+ <!--<p>Vendor list:
+       <ul>
+        {{#each selectedvendor as |vendorList|}}
+           <li>{{vendorList}}</li>
+          {{/each}}
+       </ul>        
+</p>-->
+
+<button type="button" class="btn btn-primary"{{action 'submitselectvendorlist' selectedvendor }}>
+      Submit 
+      </button>
+</div>
+{{else}}
+
+<p><h1>Choose one of Supplier the for Purchase Order:</h1></p>
+    <!--This code is for when regulators selects vendor for anchor-->  
+      <!-- <ul>
+        {{#each selectedvendor as |vendorList|}}
+        <li> {{radio-button value=vendorList checked=selectedVendorName onchange=(action 'particularVendor')}} {{vendorList}}</li>
+        
+        {{/each}}
+       </ul>      
+      </p>
+      <button type="button" class="btn btn-primary"{{action 'particularVendor'selectedVendorName }}>
+      Next
+      </button>
+      </div>-->
+
+<div class="list-group">
+      <p class="list-group-item">
+            {{!vendorlist is coming from mixin}}
+           {{!-- {{multiselect-checkboxes options=vendorList  selection=selectedvendor }}--}}
+            <ul>
+                  {{#each vendorList as |item|}}
+                        <li> {{radio-button value=item checked=selectedVendorName onchange=(action 'particularVendor')}}{{item}}
+                        </li>
+                  {{/each}}
+            </ul>     
+
+      </p>
+
+  <!--    <p>Vendor list:
+            <ul>
+                  {{#each selectedvendor as |vendorList|}}
+                  <li>{{vendorList}}</li>
+                  {{/each}}
+            </ul>        
+      </p>-->
+<button type="button" class="btn btn-primary"{{action 'particularVendor' selectedVendorName  }}>
+      Submit 
+</button>{{selectedVendorName}}
+</div>
+
+{{/if}}

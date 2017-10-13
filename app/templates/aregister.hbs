@@ -1,0 +1,207 @@
+<div class="panel panel-primary">
+<div class="panel-heading"> Anchor Personal details </div>
+</div>
+  <form class="form-horizontal">
+
+      <div class="form-group">
+      <label class="control-label col-sm-2" for="fname">First Name:</label>
+      <div class="col-sm-10">
+          {{validated-input type="text" model=this  valuePath='fname' placeholder="Enter first name"}}
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="lname">Last Name:</label>
+      <div class="col-sm-10">
+         {{validated-input type="text" model=this  valuePath='lname' placeholder="Enter first name"}}
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-10">
+         {{validated-input type="email" model=this  valuePath='email' placeholder="Enter Email"}}
+       
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Password:</label>
+      <div class="col-sm-10">
+          {{validated-input type="password"  model=this valuePath="password" placeholder="Enter Password"}}
+       
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="cpwd">Confirm Password:</label>
+      <div class="col-sm-10">
+          {{validated-input type="password"model=this valuePath="confirmpassword" placeholder="Enter Conform password"}}
+       
+      </div>
+    </div>
+    
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="mobile">Phone NO:</label>
+      <div class="col-sm-10">        
+          {{validated-input type="text"  model=this valuePath="phonenumber" placeholder="Mobile Number"}}  
+      </div>
+    </div>
+   
+<div class="panel panel-primary">
+<div class="panel-heading"> Anchor bank details </div>
+</div>
+
+ <div class="form-group">
+      <label class="control-label col-sm-2" for="opemail">Operations Email ID:</label>
+      <div class="col-sm-10">        
+          {{validated-input type="text"model=this valuePath="opremail" placeholder="Operations Email"}}  
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="accno">Repayment Account No.:</label>
+      <div class="col-sm-10">        
+          {{validated-input type="text"  model=this valuePath="repayaccno" placeholder="Repayment Account"}}  
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="rmemail">Relationship Manager Email ID:</label>
+      <div class="col-sm-10">        
+          {{validated-input type="text"  model=this valuePath="rmemail" placeholder="Relationship Manager Email"}}  
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="cusmlimit">Customers Limit:</label>
+      <div class="col-sm-10">        
+          {{validated-input type="text"  model=this valuePath="customerlimit" placeholder="Customers Limit"}}  
+      </div>
+    </div>
+
+   <!--  <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Fee IncomeAccount No:</label>
+      <div class="col-sm-10">        
+          {{input type="text" class="form-control"  placeholder="Fee IncomeAccount "}}  
+      </div>
+    </div>-->
+
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="feeper">Fee Percentage:</label>
+      <div class="col-sm-10">        
+          {{validated-input type="text"  model=this valuePath="feepercentage" placeholder="Fee Percentage "}}  
+      </div>
+    </div>
+<!--
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Penal Interest:</label>
+      <div class="col-sm-10">        
+          {{input type="text" class="form-control"  placeholder="Penal Interest"}}  
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Fee GraceInterest:</label>
+      <div class="col-sm-10">        
+          {{input type="text" class="form-control"  placeholder="Fee GraceInterest"}}  
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Fee IncomeAccount No.</label>
+      <div class="col-sm-10">        
+          {{input type="text" class="form-control"  placeholder="Fee IncomeAccount No."}}  
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Grace Interest Period:</label>
+      <div class="col-sm-10">        
+          {{input type="text" class="form-control"  placeholder="Grace Interest Period "}}  
+      </div>
+    </div>
+
+      <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Interest Earned GL:</label>
+      <div class="col-sm-10">        
+          {{input type="text" class="form-control"  placeholder="Interest Earned GL"}}  
+      </div>
+    </div>
+
+      <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Grace Interest Period:</label>
+      <div class="col-sm-10">        
+          {{input type="text" class="form-control"  placeholder="Limit Expiry Date"}}  
+      </div>
+    </div>
+
+      <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Pool Account No:</label>
+      <div class="col-sm-10">        
+          {{input type="text" class="form-control"  placeholder="Pool Account No"}}  
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Vendor Finance GL:</label>
+      <div class="col-sm-10">        
+          {{input type="text" class="form-control"  placeholder="Vendor Finance GL"}}  
+      </div>
+    </div>
+
+
+
+<div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Accrued Interest Payable GL</label>
+      <div class="col-sm-10">        
+          {{input type="text" class="form-control"  placeholder="Accrued Interest Payable GL"}}  
+      </div>
+    </div>
+
+
+<div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Accrued Interest Receivable GL:</label>
+      <div class="col-sm-10">        
+          {{input type="text" class="form-control"  placeholder="Accrued Interest Receivable GL"}}  
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Liquidation</label>
+      <div class="col-sm-10">        
+          {{input type="text" class="form-control"  placeholder="Liquidation"}}  
+      </div>
+    </div>
+
+
+<div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Maximum Over Due Percentage:</label>
+      <div class="col-sm-10">        
+          {{input type="text" class="form-control"  placeholder="Maximum Over Due Percentage"}}  
+      </div>
+    </div>
+
+-->
+    <!-- sumbit button -->
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <input type="button" class="btn btn-primary pull-right" value="Submit" {{action 'aregister''anchor'}}>
+      </div>
+    </div>
+  </form>
+
+  {{#if isShowingModal}}
+  {{#modal-dialog close="toggleModal"
+                  targetAttachment="center"
+                  translucentOverlay=true}}
+   <div class="loginmodal-container">
+  <p>
+     Registration successfull .. !!
+  </p>
+
+ <input type="button" class="btn btn-primary pull-right" value="OK" {{action 'gotohome'}}>
+   </div>
+
+  {{/modal-dialog}}
+{{/if}}
