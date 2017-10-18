@@ -10,18 +10,18 @@
       </tr>
     </thead>
     <tbody>
-      <ul style="list-style-type:none">
+      
      {{#each message as |item|}}
       <tr>
-      <td>  <li> {{item.programid}} </li></td>
-      <td> <li> {{item.date}}</li></td>
-      <td> <li> <button {{action 'vendorprogram' item.status item.programid item}}>{{item.status}}</button></li></td>
+      <td>  {{item.programid}} </td>
+      <td> {{item.date}}</td>
+      <td>  <a {{action 'vendorprogram' item.status item.programid item}}>{{item.status}}</a></td>
   
    <!--  <td>  <li> <button {{action 'close' item}}>Close</button></li></td>-->
       </tr>
       {{/each}}
      
-      </ul>
+ 
     </tbody>
   </table>
   {{#if showRxpayment}}

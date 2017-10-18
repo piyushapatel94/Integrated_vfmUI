@@ -28,7 +28,7 @@ export default Ember.Mixin.create({
         chooseVendor: function(vendorItem) {
             selectedvendor = vendorItem,
             this.set('selectedVendor', selectedvendor);
-            this.this.modelFor('program').set('selectedVendor', vendorItem);
+            this.modelFor('program').set('selectedVendor', vendorItem);
             this.send('selectedVendor', vendorItem);
             this.set('vendornotchoosen', false);
             this.set('percentageComplete', 60);

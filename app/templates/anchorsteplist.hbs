@@ -9,7 +9,9 @@
   onStepperCompleted=(action "saveModel") as |stepper|}}
     
   
-  {{#stepper.step label="Select Vendor" stepNumber=1 as |step|}}
+
+
+  {{#stepper.step label="Start" stepNumber=1 as |step|}}
     {{#step.body}}
      
       {{partial "step2"}}
@@ -24,11 +26,32 @@
     {{/step.actions}}
   {{/stepper.step}}
 
-{{#stepper.step label="purchase Order" stepNumber=2 as |step|}}
+
+
+
+  {{#stepper.step label="Select Vendor" stepNumber=2 as |step|}}
+    {{#step.body}}
+     
+      {{partial "step2"}}
+    {{/step.body}}
+    {{#step.actions as |nextStep previousStep|}}
+     {{!--  {{#paper-button primary=true raised=true onClick=(action 'nextStep')}}
+        Continue
+      {{/paper-button}} 
+     {{#paper-button onClick=(action 'previousStep')}}
+        Back
+      {{/paper-button}}--}}
+    {{/step.actions}}
+  {{/stepper.step}}
+
+{{#stepper.step label="purchase Order" stepNumber=3 as |step|}}
     {{#step.body}} 
       {{partial "step4"}}
     {{/step.body}}
     {{#step.actions as |nextStep previousStep|}}
+     {{#paper-button primary=true raised=true onClick=(action 'previousStep')}}
+       Back
+      {{/paper-button}}
         {{#paper-button primary=true raised=true onClick=(action 'poupload')}}
         Submit
       {{/paper-button}}
@@ -36,11 +59,13 @@
         {{#paper-button primary=true raised=true onClick=(action 'nextStep')}}
         Approve Invoice
       {{/paper-button}}
+      
+       
     
     {{/step.actions}}
   {{/stepper.step}}
 
- {{#stepper.step label="approve Invoice" stepNumber=3 as |step|}}
+ {{#stepper.step label="approve Invoice" stepNumber=4 as |step|}}
     {{#step.body}}
            {{partial 'step6'}}
     {{/step.body}}
@@ -71,3 +96,18 @@
   {{/modal-dialog}}
 {{/if}}
 
+{{#if isfileupload}}
+  {{#modal-dialog close="toggleModal"
+                  targetAttachment="center"
+                  translucentOverlay=true}}
+   <div class="loginmodal-container">
+ <p>
+
+  
+      
+ </p>
+ <input type="button" class="btn btn-primary pull-right" value="OK" {{action 'gotohome'}}>
+   </div>
+
+  {{/modal-dialog}}
+{{/if}}

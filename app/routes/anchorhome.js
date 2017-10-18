@@ -5,7 +5,7 @@ export default Ember.Route.extend({
         //var aController = this.controllerFor('anchorhome');
 
         this.controllerFor('anchorhome').set('approveProperty', false);
-        this.controllerFor('anchorhome').set('currentStep', 1);
+        //this.controllerFor('anchorhome').set('currentStep', 1);
 
         var data = [{
                 "sl": "1",

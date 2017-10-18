@@ -17,10 +17,10 @@
 
 {{else if PORaised}}
     {{partial 'step8'}}
-{{else if paymentapproved}}
+{{else if closeprogram}}
     {{partial 'step9' }}
 {{else if  Invoiceapprove}}
-    {{partial 'invoiceapprv'}}
+    {{partial 'initaitepayment'}}
 {{else}}
     <div class="row padding-10">
       <input type="button" class="btn btn-primary pull-right" value="Create New Program" {{action 'createprogram'}}>
@@ -39,18 +39,17 @@
       </tr>
     </thead>
     
-      <ul style="list-style-type:none">
-     {{#each message as |item|}}
+
+     {{#each record as |item|}}
       <tr>
-      <td style="padding:3px">  <li> {{item.programid}} </li></td>
-      <td style="padding:3px"> <li> {{item.date}}</li></td>
-      <td> <li> <button {{action 'detailprogram' item.status item.programid}}>{{item.status}}</button></li></td>
-  
-     <td>  <li> <button {{action 'closeProgram' item}}>Close</button></li></td>
+      <td style="padding:3px">  {{item.programid}}</td>
+      <td style="padding:3px">  {{item.date}}</td>
+      <td style="padding:3px"> <a  {{action 'detailprogram' item.status item.programid}}>{{item.status}} </a></td>
+      <td  style="padding:3px">  <button {{action 'closeProgram' message item}}>Close</button></td>
       </tr>
       {{/each}}
      
-      </ul>
+   
     
   </table>
 {{/if}}

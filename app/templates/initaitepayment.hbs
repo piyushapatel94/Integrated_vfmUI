@@ -8,7 +8,7 @@
       <div class="form-group">
       <label class="control-label col-sm-2" >Vendor :</label>
       <div class="col-sm-10">
-          {{input type="text" class="form-control" id="name" placeholder="vendor" value="ABC Enterprise"}}
+          {{validated-input type="text" model=this  valuePath='vendorname' placeholder="Vendor name"}}
        
       </div>
     </div>
@@ -17,14 +17,13 @@
     <div class="form-group">
       <label class="control-label col-sm-2">Recievable Amount:</label>
       <div class="col-sm-10">
-          {{input type="text" class="form-control" id="email" placeholder="Recievable Amount"}}
-       
+         {{validated-input type="text" model=this  valuePath='totalamount' placeholder="Recievable Amount"}}
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2">Discounted Amount:</label>
       <div class="col-sm-10">        
-          {{input type="text" class="form-control"  placeholder="Discount"}}  
+           {{validated-input type="text" model=this  valuePath='discountamount' placeholder="Discounted Amount"}}
       </div>
     </div>
 
@@ -32,21 +31,21 @@
  <div class="form-group">
       <label class="control-label col-sm-2"  >Payment Mode:</label>
       <div class="col-sm-10">        
-          {{input type="text" class="form-control"  placeholder="NEFT"}}  
+            {{validated-input type="text" model=this  valuePath='paymentmode' placeholder="Payment Mode"}}
       </div>
     </div>
 
      <div class="form-group">
-      <label class="control-label col-sm-2"  >Bank</label>
+      <label class="control-label col-sm-2" >Bank</label>
       <div class="col-sm-10">        
-          {{input type="text" class="form-control"  placeholder="bank"}}  
+            {{validated-input type="text" model=this  valuePath='vendorbank' placeholder="Bank"}}
       </div>
     </div>
 
    
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <input type="button" class="btn btn-primary pull-right" value="Continue" {{action 'initiate'}}>
+        <input type="button" class="btn btn-primary pull-right" value="Continue" {{action 'toinititaepayment'}}>
       </div>
     </div>
   </form>

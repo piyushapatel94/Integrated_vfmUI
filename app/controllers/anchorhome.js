@@ -8,13 +8,13 @@ export default Ember.Controller.extend(stepperMixin, {
     vendornotchoosen: true,
     percentageComplete: 0,
     showDetails: false,
-    currentStep: 1,
+    currentStep: 0,
     watchanchorstep: function() {
         var step = this.get('steps');
         if (step === 'invoice') {
             console.log(step)
-            this.set('currentStep', 3);
-            this.set('percentageComplete', 70);
+            this.set('currentStep', 0);
+            this.set('percentageComplete', 60);
         }
         if (step === 'po') {
             console.log(step)
@@ -22,6 +22,7 @@ export default Ember.Controller.extend(stepperMixin, {
             this.set('percentageComplete', 10);
         }
     }.observes('steps'),
+
     columns: [{
             "propertyName": "sl",
             "title": "sl.",
@@ -66,10 +67,10 @@ export default Ember.Controller.extend(stepperMixin, {
             console.log("item --",JSON.stringify(item));
             //var status = record.status;
             if (status === "program Initiated") {
-                this.set("showsteplist",false);
-                this.transitionToRoute('anchorprogram', { queryParams: { steps: 'po' } });
-            } else if (status === "Invoice approval") {
-                this.set("showsteplist",true);
+               // this.set('currentStep', 1);
+               this.transitionToRoute('/anchorprogram?steps=po');
+            }  if (status === "Invoice approval") {
+               // this.set("showsteplist",true);
                 this.transitionToRoute('anchorprogram', { queryParams: { steps: 'invoice' } });
             }
 

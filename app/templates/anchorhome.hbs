@@ -13,17 +13,17 @@
       </tr>
     </thead>
     <tbody>
-      <ul style="list-style-type:none">
+     
      {{#each message as |item|}}
       <tr>
-      <td>  <li> {{item.programid}} </li></td>
-      <td> <li> {{item.date}}</li></td>
-      <td> <li> <button {{action 'anchorprogram' item.status item.programid item}}>{{item.status}}</button></li></td>
+      <td>  {{item.programid}} </td>
+      <td>  {{item.date}}</td>
+      <td>  <button {{action 'anchorprogram' item.status item.programid item}}>{{item.status}}</button></td>
   
-     <td>  <li> <button {{action 'close' item}}>Close</button></li></td>
+     <td>  <button {{action 'close' item}}>Close</button></td>
       </tr>
       {{/each}}
      
-      </ul>
+     
     </tbody>
   </table>

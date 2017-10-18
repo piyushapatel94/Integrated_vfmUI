@@ -15,9 +15,9 @@ export default Ember.Route.extend({
             mycontroller.controllerFor('anchorprogram').set('url',url);
           //  alert("Document uploaded sucessfully!!!!");
              // this.toggleProperty('isShowingModalphoto');
-             mycontroller.controllerFor('anchorprogram').set("approveProperty",true);
+             mycontroller.controllerFor('anchorprogram').set("isfileuploadshow",true);
              mycontroller.controllerFor('anchorprogram').set("modalmessage","file upload sucessfully. 1.. click on ok button");
-            console.log("saviing file...");
+         //   console.log("saviing file...");
             console.log("file upload sucessfully. 1..");
             //return image.save();
             
@@ -38,9 +38,9 @@ model(){
        console.log('programid from po:' +programid);
        this.controllerFor('anchorprogram').set('programid', programid);
 
-       var showsteplist = this.controllerFor('anchorhome').get('showsteplist' ); 
+       /*var showsteplist = this.controllerFor('anchorhome').get('showsteplist' ); 
        console.log('showsteplist from po:' +showsteplist);
        this.controllerFor('anchorprogram').set('showsteplist', showsteplist);
-
+*/
 }
 });

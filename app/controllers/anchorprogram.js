@@ -18,7 +18,7 @@ export default Ember.Controller.extend(stepperMixin, {
         var step = this.get('steps');
         if (step === 'invoice') {
             console.log(step)
-            this.set('currentStep', 3);
+            this.set('currentStep', 1);
             this.set('percentageComplete', 60);
         }
         if (step === 'po') {
@@ -123,7 +123,7 @@ export default Ember.Controller.extend(stepperMixin, {
                     console.log("message" + JSON.stringify(response));
                     mycontroller.toggleProperty('approveProperty');
                     mycontroller.set('modalmessage', " Purchase order uploaded successfully !!! , Click OK to go back to home")
-                    mycontroller.set('percentageComplete', 60);
+                    mycontroller.set('percentageComplete', 50);
                     },      
                     error: function(response) {
                     console.log('DEBUG: GET Enquiries Failed');
@@ -135,18 +135,18 @@ export default Ember.Controller.extend(stepperMixin, {
         },
         gotohome: function() {
 
-            this.toggleProperty('approveProperty');
-
+          //  this.toggleProperty('approveProperty');
+            this.transitionToRoute('anchorhome');
 
         },
         approve:function(){
             var programid =this.get('programid');
             console.log("programid---from anchorprogram",programid);
             let{formdate,
-                anchorname,
+                vendorname,
                 invoiceno,
                 totalamount
-             }=this.getProperties('formdate','anchorname','invoiceno','totalamount')
+             }=this.getProperties('formdate','vendorname','invoiceno','totalamount')
 
              var dataString = {  
                 "programid":programid,
@@ -154,7 +154,7 @@ export default Ember.Controller.extend(stepperMixin, {
                     "InvolvedParties":"manufacturer",
                     "transactionString":{
                         "updatedBy":"manufacturer",
-                       "anchorname": anchorname,
+                       "vendorname": vendorname,
                         "invoiceno":invoiceno,
                         "totalamount":totalamount,
                         "formdate":formdate,  
@@ -183,7 +183,11 @@ export default Ember.Controller.extend(stepperMixin, {
                     }
 
                     });     
+        },
+        okbutton:function(){
+            this.set("isfileuploadshow",false);
         }
+        
     }
 
 });

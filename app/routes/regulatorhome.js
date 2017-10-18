@@ -6,6 +6,8 @@ export default Ember.Route.extend({
         this.controllerFor('regulatorhome').set('approveProperty', false);
        var programid= this.controllerFor('regulatorhome').get('programid');
        console.log("programid --",programid);
+       this.controllerFor('regulatorhome').set('closeprogram', false);
+       
         var data = [{
                 "sl": "1",
                 "Supplier": "SupplierA",
@@ -77,10 +79,25 @@ export default Ember.Route.extend({
             contentType: 'application/json',
             success: function(data) {
                  var message = data.message;
+
                  console.log("message :-----",message);
                 console.log("data--->>>", JSON.stringify(data));
               
                 mycontroller.controllerFor('regulatorhome').set("message",message);
+                var record =[];
+                for(var i=0;i<message.length;i++){
+                    var mydate =JSON.stringify(message[i].date);
+                    var formdate1 =  mydate.substr(1, 10);
+                    console.log("formdate ======>>",formdate1);
+                    var status =message[i].status;
+                    var programid = message[i].programid;
+                    record.push({"date":formdate1,
+                                "status":status,
+                                "programid":programid})
+            console.log(record,"our own record object")
+            mycontroller.controllerFor('regulatorhome').set("record",record);
+                }
+               
                 //return message;
 
             },
@@ -92,7 +109,7 @@ export default Ember.Route.extend({
 
         });
 
-         $.ajax({
+       /*  $.ajax({
             url:'http://192.168.0.11:3000/readProgram',
             type: 'GET',
             contentType: 'application/json',
@@ -114,7 +131,7 @@ export default Ember.Route.extend({
 
             }
 
-        });
+        });*/
 
 
       // return data;

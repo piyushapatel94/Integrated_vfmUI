@@ -7,6 +7,7 @@ export default Ember.Controller.extend({
     PORaised: false,
     paymentapproved: false,
     Invoiceapprove: false,
+    closeprogram:false,
     columns: [{
             "propertyName": "sl",
             "title": "sl.",
@@ -50,8 +51,16 @@ export default Ember.Controller.extend({
             console.log("in create ");
             
         },
-        closeProgram: function() {
-            this.transitionToRoute('program', { queryParams: { step: 'close' } });
+        closeProgram: function(message,item) {
+            var message =message;
+            var item = item;
+            console.log("item-----",JSON.stringify(item));
+
+            var status = item.status;
+            if(status === "close program"){
+                message.deleteRow(0);
+               }
+            //this.transitionToRoute('program', { queryParams: { step: 'close' } });
         },
         detailprogram: function(status,programid) {
            
@@ -71,15 +80,59 @@ export default Ember.Controller.extend({
             } else if (status === "Invoice approved") {
                 this.set("Invoiceapprove", true)
             }
+             if(status === "payment recieved"){
+                this.set("closeprogram",true);
+                this.set("programid",programid);
+            }
 
         },
         closure: function() {
             console.log("asa");
-            this.toggleProperty('approveProperty');
+
+            var programid =this.get('programid');
+            console.log("programid---from anchorprogram",programid);
+            let{
+                totalamount,
+               
+             }=this.getProperties('totalamount');
+
+             var dataString = {  
+                "programid":programid,
+                    "status":"close program",
+                    "InvolvedParties":"bank",
+                    "transactionString":{
+                        
+                        "updatedBy":"bank",
+                       "totalamount":totalamount,
+                       "status":"close program",
+                    }
+                };
+                console.log(JSON.stringify(dataString));
+                    var mycontroller = this;
+
+                    return $.ajax({
+                        url:'http://192.168.0.11:3000/updateProgram',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(dataString),
+                        success: function(response) {
+                            var message = response.message;
+                        console.log("message" + JSON.stringify(response));
+                        mycontroller.toggleProperty('approveProperty');
+                        mycontroller.set('modalmessage', "This program is closed..!!! , Click OK to go back to home")
+                        mycontroller.set('percentageComplete', 100);
+                        },      
+                        error: function(response) {
+                        console.log('DEBUG: GET Enquiries Failed');
+                        console.log("Error Message: ", response.message);
+                        
+                        }
+
+                 });     
         },
         gotohome: function() {
-            // this.transitionToRoute('regulatorhome');
-            window.location.reload(true);
+             this.transitionToRoute('regulatorhome');
+         //   window.location.reload(true);
         },
         okgotohome:function(){
             this.set('approveProperty',false);
@@ -89,8 +142,12 @@ export default Ember.Controller.extend({
             var programid =this.get('programid');
             console.log("programid---from anchorprogram",programid);
             let{
-                totalamount
-             }=this.getProperties('totalamount');
+                totalamount,
+                vendorname,
+                discountamount,
+                paymentmode,
+                vendorbank
+             }=this.getProperties('totalamount','vendorname','discountamount','paymentmode','vendorbank');
 
              var dataString = {  
                 "programid":programid,
@@ -98,7 +155,11 @@ export default Ember.Controller.extend({
                     "InvolvedParties":"bank",
                     "transactionString":{
                         "updatedBy":"bank",
+                        "vendorname":vendorname,
                        "totalamount":totalamount,
+                       "discountamount":discountamount,
+                       "paymentmode":paymentmode,
+                       "vendorbank":vendorbank,
                        "status":"payment initiated",
                     }
                 };

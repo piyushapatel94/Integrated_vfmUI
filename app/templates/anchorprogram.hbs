@@ -4,7 +4,7 @@
     {{percentageComplete}}%
   </div>
 </div>
-
+{{isfileuploadshow}}
 
 {{#if showsteplist}}
 {{partial 'step6'}}
@@ -24,6 +24,21 @@
       
  </p>
  <input type="button" class="btn btn-primary pull-right" value="OK" {{action 'gotohome'}}>
+   </div>
+
+  {{/modal-dialog}}
+{{/if}}
+{{#if isfileuploadshow}}
+  {{#modal-dialog close="toggleModal"
+                  targetAttachment="center"
+                  translucentOverlay=true}}
+   <div class="loginmodal-container">
+ <p>
+
+   file upload sucessfully....
+      
+ </p>
+ <input type="button" class="btn btn-primary pull-right" value="OK" {{action 'okbutton'}}>
    </div>
 
   {{/modal-dialog}}
