@@ -44,7 +44,8 @@ module.exports = function(environment) {
     }
 
     if (environment === 'production') {
-
+        ENV.GOURL='http://119.81.59.59:3002/vfm';
+        ENV.locationType = 'hash';
     }
 
     return ENV;
