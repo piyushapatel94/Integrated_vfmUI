@@ -19,6 +19,7 @@ Router.map(function() {
   this.route('initaitepayment');
   this.route('anchorprogram');
   this.route('vendorhome2');
+  this.route('approveinvoice');
 });
 
 export default Router;

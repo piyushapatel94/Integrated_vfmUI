@@ -1,5 +1,5 @@
 import Ember from 'ember';
-
+import CONFIG from 'vendorfin/config/environment';
 export default Ember.Route.extend({
     actions:{
         uploadDoc:function (file) {
@@ -8,14 +8,14 @@ export default Ember.Route.extend({
     var mycontroller = this;
              console.log(file)
        
-          file.upload('http://192.168.0.11:3000/UploadDocs').then(function (response) {
+          file.upload(CONFIG.GOURL+'/UploadDocs').then(function (response) {
             console.log(JSON.stringify(response));
             var url =response.body.url;
             console.log("url ::",JSON.stringify(url));
             mycontroller.controllerFor('vendorhome').set('url',url);
           
              mycontroller.controllerFor('vendorhome').set("approveProperty",true);
-             mycontroller.controllerFor('vendorhome').set("modalmessage","file upload sucessfully. 1.. click on ok button");
+             mycontroller.controllerFor('vendorhome').set("modalmessage","file upload sucessfully. ... click on ok button");
            
             console.log("file upload sucessfully. 1..");
             //return image.save();

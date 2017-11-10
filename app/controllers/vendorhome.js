@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import stepperMixin from '../mixins/stepper';
-
+import CONFIG from 'vendorfin/config/environment';
 export default Ember.Controller.extend(stepperMixin, {
     anchorList: ["ManufacturerA", "ManufacturerB", "ManufacturerC", "ManufacturerD", "ManufacturerE"],
     anchorName: null,
@@ -52,16 +52,16 @@ export default Ember.Controller.extend(stepperMixin, {
                     var mycontroller = this;
 
                     return $.ajax({
-                    url:'http://192.168.0.11:3000/updateProgram',
+                    url: CONFIG.GOURL+'/updateProgram',
                     type: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(dataString),
                     success: function(response) {
                         var message = response.message;
                     console.log("message" + JSON.stringify(response));
-                    mycontroller.toggleProperty('approveProperty');
-                    mycontroller.set('modalmessage', " Invoice uploaded successfully !!! , Click OK to go back to home")
-                    mycontroller.set('percentageComplete', 60);
+                    mycontroller.toggleProperty('isShowPOPup');
+                    //mycontroller.set('modalmessage', " Invoice uploaded successfully !!! , Click OK to go back to home")
+                    //mycontroller.set('percentageComplete', 100);
                     },      
                     error: function(response) {
                     console.log('DEBUG: GET Enquiries Failed');
@@ -70,9 +70,7 @@ export default Ember.Controller.extend(stepperMixin, {
                     }
 
                     });       
-            this.set('modalmessage', " Invoice uploaded successfully !!! , Click OK to go back to home");
-            console.log("approved");
-            this.toggleProperty('approveProperty');
+            
             this.set('percentageComplete', 100);
         },
         toggleModal: function(usertype) {
@@ -124,6 +122,10 @@ export default Ember.Controller.extend(stepperMixin, {
                 this.send('nextStep');
 
             }
+        },
+        gotobackhome:function(){
+            this.set("isShowPOPup",false);
+            this.transitionToRoute("vendorhome2");
         }
     }
 });

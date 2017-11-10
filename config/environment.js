@@ -29,7 +29,7 @@ module.exports = function(environment) {
         // ENV.APP.LOG_TRANSITIONS = true;
         // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
         // ENV.APP.LOG_VIEW_LOOKUPS = true;
-        ENV.SERVICEURL = "http://localhost:8080/";
+        ENV.GOURL='http://192.168.0.12:3000';
     }
 
     if (environment === 'test') {

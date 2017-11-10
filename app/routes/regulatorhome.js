@@ -1,5 +1,5 @@
 import Ember from 'ember';
-
+import CONFIG from 'vendorfin/config/environment';
 export default Ember.Route.extend({
 
     model() {
@@ -74,7 +74,7 @@ export default Ember.Route.extend({
         ]
         var mycontroller = this;
         Ember.$.ajax({
-            url:'http://192.168.0.11:3000/bankIndex',
+            url:CONFIG.GOURL+'/bankIndex',
             type: 'GET',
             contentType: 'application/json',
             success: function(data) {

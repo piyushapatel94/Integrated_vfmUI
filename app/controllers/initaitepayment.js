@@ -11,6 +11,9 @@ export default Ember.Controller.extend(stepperMixin,{
             this.toggleProperty('approveProperty'); 
         },
         gotohome:function(){
+            console.log("in closebutton --------->>>>>> ");
+            this.set("ISshowPaymentInitiate",false);
+            this.set("closeprogram",false); 
             this.transitionToRoute('regulatorhome');
         }
     }

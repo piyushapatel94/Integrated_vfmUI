@@ -3,7 +3,7 @@ import stepperMixin from '../mixins/stepper';
 
 export default Ember.Controller.extend(stepperMixin, {
 
-
+    isShowinginvoice:false,
     selectedVendor: null,
     vendornotchoosen: true,
     percentageComplete: 0,
@@ -13,7 +13,7 @@ export default Ember.Controller.extend(stepperMixin, {
         var step = this.get('steps');
         if (step === 'invoice') {
             console.log(step)
-            this.set('currentStep', 0);
+            this.set('currentStep', 3);
             this.set('percentageComplete', 60);
         }
         if (step === 'po') {
@@ -58,7 +58,7 @@ export default Ember.Controller.extend(stepperMixin, {
     actions: {
         //this function for detail button on anchorhome
         anchorprogram: function(status,programid ,item) {
-             var status ='Invoice approval'
+             var status = status;
             console.log("status --",status);
             var programid = programid;
             console.log("programid --",programid);
@@ -68,10 +68,11 @@ export default Ember.Controller.extend(stepperMixin, {
             //var status = record.status;
             if (status === "program Initiated") {
                // this.set('currentStep', 1);
-               this.transitionToRoute('/anchorprogram?steps=po');
-            }  if (status === "Invoice approval") {
-               // this.set("showsteplist",true);
+               this.transitionToRoute('anchorprogram');
+            }  if (status === "Invoice raised") {
+               this.set("showsteplist",true);
                 this.transitionToRoute('anchorprogram', { queryParams: { steps: 'invoice' } });
+            //this.set("isShowinginvoice",true);
             }
 
 

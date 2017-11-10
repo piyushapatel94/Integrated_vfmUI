@@ -87,7 +87,7 @@ export default Ember.Controller.extend(stepperMixin, {
                 var mycontroller = this;
     
                      $.ajax({
-                    url:'http://192.168.0.11:3000/createProgram',
+                    url:  CONFIG.GOURL+'/createProgram',
                     type: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(programobj),

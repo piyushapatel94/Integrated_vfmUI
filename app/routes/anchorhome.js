@@ -1,10 +1,11 @@
 import Ember from 'ember';
-
+import CONFIG from 'vendorfin/config/environment';
 export default Ember.Route.extend({
     model() {
         //var aController = this.controllerFor('anchorhome');
 
         this.controllerFor('anchorhome').set('approveProperty', false);
+        this.controllerFor('anchorhome').set('showsteplist', false);
         //this.controllerFor('anchorhome').set('currentStep', 1);
 
         var data = [{
@@ -36,7 +37,7 @@ export default Ember.Route.extend({
 
        var mycontroller = this;
         return  $.ajax({
-              url:'http://192.168.0.11:3000/readIndex',
+              url:CONFIG.GOURL+'/readIndex',
               type: 'GET',
               contentType: 'application/json',
               success: function(data) {

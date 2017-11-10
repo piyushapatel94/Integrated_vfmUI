@@ -75,9 +75,9 @@ export default Ember.Controller.extend({
                 this.transitionToRoute('initaitepayment');
             } else if (status === "PO raised") {
                 this.set("PORaised", true);
-            } else if (status === "payment recieved") {
+            } /*else if (status === "payment recieved") {
                 this.set("paymentapproved", true);
-            } else if (status === "Invoice approved") {
+            } */else if (status === "Invoice approved") {
                 this.set("Invoiceapprove", true)
             }
              if(status === "payment recieved"){
@@ -111,15 +111,15 @@ export default Ember.Controller.extend({
                     var mycontroller = this;
 
                     return $.ajax({
-                        url:'http://192.168.0.11:3000/updateProgram',
+                        url:  CONFIG.GOURL+'/updateProgram',
                         type: 'POST',
                         contentType: 'application/json',
                         data: JSON.stringify(dataString),
                         success: function(response) {
                             var message = response.message;
                         console.log("message" + JSON.stringify(response));
-                        mycontroller.toggleProperty('approveProperty');
-                        mycontroller.set('modalmessage', "This program is closed..!!! , Click OK to go back to home")
+                        mycontroller.toggleProperty('ISshowapproveProperty');
+                       // mycontroller.set('modalmessage', "This program is closed..!!! , Click OK to go back to home")
                         mycontroller.set('percentageComplete', 100);
                         },      
                         error: function(response) {
@@ -137,6 +137,17 @@ export default Ember.Controller.extend({
         okgotohome:function(){
             this.set('approveProperty',false);
             this.set('toggleModal',false);
+        },
+        myokbutton:function(){
+            console.log("in okmybutton --------->>>>>> ");
+            this.set("initaitepayment",false);
+            window.location.reload(true);
+            //this.set("closeprogram",false);
+        },
+        closebutton:function(){
+            console.log("in closebutton --------->>>>>> ");
+            this.set("ISshowapproveProperty",false);
+            this.set("closeprogram",false); 
         },
         toinititaepayment:function(){
             var programid =this.get('programid');
@@ -167,15 +178,15 @@ export default Ember.Controller.extend({
                     var mycontroller = this;
 
                     return $.ajax({
-                    url:'http://192.168.0.11:3000/updateProgram',
+                    url:CONFIG.GOURL+'/updateProgram',
                     type: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(dataString),
                     success: function(response) {
                         var message = response.message;
                     console.log("message" + JSON.stringify(response));
-                    mycontroller.toggleProperty('approveProperty');
-                    mycontroller.set('modalmessage', "Payment Initiated successfully !!! , Click OK to go back to home")
+                    mycontroller.toggleProperty('ISshowPaymentInitiate');
+                  //  mycontroller.set('modalmessage', "Payment Initiated successfully !!! , Click OK to go back to home")
                     mycontroller.set('percentageComplete', 100);
                     },      
                     error: function(response) {

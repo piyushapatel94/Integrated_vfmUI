@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import stepperMixin from '../mixins/stepper';
+import CONFIG from 'vendorfin/config/environment';
 var  selectedvendor =[];
 export default Ember.Controller.extend(stepperMixin, {
     vendorList: ["SupplierA", "SupplierB", "SupplierC", "SupplierD", "SupplierE"],
@@ -114,7 +115,7 @@ export default Ember.Controller.extend(stepperMixin, {
                     var mycontroller = this;
 
                     return $.ajax({
-                    url:'http://192.168.0.11:3000/updateProgram',
+                    url:CONFIG.GOURL+'/updateProgram',
                     type: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(dataString),
@@ -165,7 +166,7 @@ export default Ember.Controller.extend(stepperMixin, {
                     var mycontroller = this;
 
                     return $.ajax({
-                    url:'http://192.168.0.11:3000/updateProgram',
+                    url:CONFIG.GOURL +'/updateProgram',
                     type: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(dataString),

@@ -1,10 +1,11 @@
 import Ember from 'ember';
-
+import CONFIG from 'vendorfin/config/environment';
 export default Ember.Route.extend({
     model(){
+        this.controllerFor('vendorhome2').set('showdalways',true);
         var mycontroller = this;
         return  $.ajax({
-              url:'http://192.168.0.11:3000/supplierIndex',
+              url:CONFIG.GOURL+'/supplierIndex',
               type: 'GET',
               contentType: 'application/json',
               success: function(data) {

@@ -1,7 +1,9 @@
 import Ember from 'ember';
 import stepperMixin from '../mixins/stepper';
+import CONFIG from 'vendorfin/config/environment';
 
 export default Ember.Controller.extend(stepperMixin, {
+    showdalways:true,
     actions:{
         vendorprogram:function(status,programid){
             var programid =programid
@@ -13,6 +15,7 @@ export default Ember.Controller.extend(stepperMixin, {
             }if(status === 'Invoice raised'){
                 this.toggleProperty('isShowingModal');  
             }if(status === 'payment initiated'){
+                this.set('showdalways',false);
                 this.set('showRxpayment',true);
             }
            
@@ -46,7 +49,7 @@ export default Ember.Controller.extend(stepperMixin, {
                     var mycontroller = this;
 
                     return $.ajax({
-                    url:'http://192.168.0.11:3000/updateProgram',
+                    url: CONFIG.GOURL+'/updateProgram',
                     type: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(dataString),
@@ -54,6 +57,8 @@ export default Ember.Controller.extend(stepperMixin, {
                         var message = response.message;
                     console.log("message" + JSON.stringify(response));
                     mycontroller.set('showRxpayment',false);
+                    mycontroller.set('showdalways',true);
+                    
                     mycontroller.set('modalmessage', " Invoice uploaded successfully !!! , Click OK to go back to home")
                     mycontroller.set('percentageComplete', 60);
                     },      

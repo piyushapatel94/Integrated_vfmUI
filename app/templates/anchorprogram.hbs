@@ -4,10 +4,10 @@
     {{percentageComplete}}%
   </div>
 </div>
-{{isfileuploadshow}}
+
 
 {{#if showsteplist}}
-{{partial 'step6'}}
+{{partial 'invoiceapprv'}}
 
 {{else}}
 {{partial 'anchorsteplist'}}
@@ -29,7 +29,7 @@
   {{/modal-dialog}}
 {{/if}}
 {{#if isfileuploadshow}}
-  {{#modal-dialog close="toggleModal"
+  {{#modal-dialog close="toggleModals"
                   targetAttachment="center"
                   translucentOverlay=true}}
    <div class="loginmodal-container">

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-
+import CONFIG from 'vendorfin/config/environment';
 export default Ember.Route.extend({
     actions:{
         uploadDoc:function (file) {
@@ -8,7 +8,7 @@ export default Ember.Route.extend({
     var mycontroller = this;
              console.log(file)
        
-          file.upload('http://192.168.0.11:3000/UploadDocs').then(function (response) {
+          file.upload(CONFIG.GOURL+'/UploadDocs').then(function (response) {
             console.log(JSON.stringify(response));
             var url =response.body.url;
             console.log("url ::",JSON.stringify(url));
@@ -16,7 +16,7 @@ export default Ember.Route.extend({
           //  alert("Document uploaded sucessfully!!!!");
              // this.toggleProperty('isShowingModalphoto');
              mycontroller.controllerFor('anchorprogram').set("isfileuploadshow",true);
-             mycontroller.controllerFor('anchorprogram').set("modalmessage","file upload sucessfully. 1.. click on ok button");
+           //  mycontroller.controllerFor('anchorprogram').set("modalmessage","file upload sucessfully. 1.. click on ok button");
          //   console.log("saviing file...");
             console.log("file upload sucessfully. 1..");
             //return image.save();
@@ -38,9 +38,9 @@ model(){
        console.log('programid from po:' +programid);
        this.controllerFor('anchorprogram').set('programid', programid);
 
-       /*var showsteplist = this.controllerFor('anchorhome').get('showsteplist' ); 
+       var showsteplist = this.controllerFor('anchorhome').get('showsteplist' ); 
        console.log('showsteplist from po:' +showsteplist);
        this.controllerFor('anchorprogram').set('showsteplist', showsteplist);
-*/
+
 }
 });

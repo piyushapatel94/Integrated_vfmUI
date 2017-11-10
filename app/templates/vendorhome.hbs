@@ -74,3 +74,19 @@
 
   {{/modal-dialog}}
 {{/if}}
+
+{{#if isShowPOPup}}
+  {{#modal-dialog close="toggleModal"
+                  targetAttachment="center"
+                  translucentOverlay=true}}
+   <div class="loginmodal-container">
+ <p>
+
+   Your Invoice Uploaded Sucessfully...!!!!!!!!
+      
+ </p>
+ <input type="button" class="btn btn-primary pull-right" value="OK" {{action 'gotobackhome'}}>
+   </div>
+
+  {{/modal-dialog}}
+{{/if}}
